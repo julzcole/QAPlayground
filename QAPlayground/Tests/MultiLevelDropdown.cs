@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace QAPlayground.Tests
 {
-    internal class MultiLevelDropdown
+    public class MultiLevelDropdown
     {
+
     }
 }
