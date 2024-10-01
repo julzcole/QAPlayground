@@ -52,7 +52,9 @@ namespace QAPlayground.WrapperFactory
                     break;
 
                 case "Chrome":
-                        driver = new ChromeDriver();
+                        ChromeOptions options = new ChromeOptions();
+                        options.AddArgument("headless");
+                        driver = new ChromeDriver(options);
                         Drivers.Add("Chrome", Driver);
                     break;
             }

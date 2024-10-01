@@ -20,7 +20,7 @@ namespace QAPlayground.Tests
 
         public BaseTest()
         {
-            _testData = TestDataHelper.LoadTestData("C:\\Users\\xXJul\\source\\repos\\QAPlayground\\QAPlayground\\TestingData\\testData.json");
+            _testData = TestDataHelper.LoadTestData(Path.Combine(Directory.GetCurrentDirectory(), "TestingData/testData.json"));
             WebDriverFactory.InitBrowser(_testData.Browser);
             WebDriverFactory.LoadApplication(_testData.Url);
             _driver = WebDriverFactory.Driver;
