@@ -13,8 +13,6 @@ namespace QAPlayground.Tests
 {
     public class DynamicTable : BaseTest
     {
-
-
         [Fact]
         public void DynamicTableTest()
         {

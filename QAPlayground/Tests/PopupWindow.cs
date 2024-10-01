@@ -6,7 +6,14 @@ using System.Threading.Tasks;
 
 namespace QAPlayground.Tests
 {
-    internal class PopupWindow
+    public class PopupWindow : BaseTest
     {
+        [Fact]
+        public void PopupWindowTest()
+        {
+            var popupWindowPage = basePage.ClickPopupWindowLink();
+            string infoText = popupWindowPage.ValidatePopupWindow();
+            Assert.Equal("Button Clicked", infoText);
+        }
     }
 }

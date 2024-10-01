@@ -19,7 +19,6 @@ namespace QAPlayground.Tests
             string[] tags = { "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten" };
             
             //Actions
-            var basePage = new BasePage(_driver);
             var tagsInputBoxPage = basePage.ClickTagsInputBoxLink();
             tagsInputBoxPage.ClickAllIcons();
             Assert.Equal("10", tagsInputBoxPage.ValidateRemainingTags());

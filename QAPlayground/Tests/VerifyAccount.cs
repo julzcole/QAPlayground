@@ -18,7 +18,6 @@ namespace QAPlayground.Tests
             /*Enter valid code by pressing the key-up button or 
              typing number and assert success message*/
 
-            var basePage = new BasePage(_driver);
             var verifyAccountPage = basePage.ClickVerifyAccountLink();
             verifyAccountPage.EnterInputs("9");
             Assert.True(verifyAccountPage.ValidateSuccessMessage());

@@ -113,7 +113,7 @@ namespace QAPlayground
 
             wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(By.XPath("//a[@href='#animals']")));
             driver.FindElement(By.XPath("//a[@href='#animals']")).Click();
-            Thread.Sleep(2);
+            //Thread.Sleep(2);
             ReadOnlyCollection<IWebElement> animalMenuItems = driver.FindElements(By.XPath("//div[@class='menu menu-secondary-enter-done']/a"));
 
             for (int i = 0; i < animalMenuItems.Count; i++)
@@ -441,7 +441,7 @@ namespace QAPlayground
 
             //Initialize Driver and set ChromeOptions to disable geolocation
             ChromeOptions options = new ChromeOptions();
-            options.AddArgument("--disable-geolocation");
+            //options.AddArgument("--disable-geolocation");
             var driver = new ChromeDriver(options);
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
             driver.Manage().Window.Maximize();

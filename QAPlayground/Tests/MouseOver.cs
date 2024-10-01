@@ -6,7 +6,15 @@ using System.Threading.Tasks;
 
 namespace QAPlayground.Tests
 {
-    internal class MouseOver
+    public class MouseOver : BaseTest
     {
+        [Fact]
+        public void MouseOverTest()
+        {
+            var mouseOverPage = basePage.ClickMouseHoverLink();
+            var priceElement = mouseOverPage.ValidateMouseOver();
+            Assert.True(priceElement.Displayed);
+            Assert.Equal("$24.96", priceElement.Text);
+        }
     }
 }
