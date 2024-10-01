@@ -6,7 +6,14 @@ using System.Threading.Tasks;
 
 namespace QAPlayground.Tests
 {
-    internal class NestedIFrames
+    public class NestedIFrames : BaseTest
     {
+        [Fact]
+        public void NestedIFramesTest()
+        {
+            var nestedIFramesPage = basePage.ClickNestedIFrameLink();
+            string messageText = nestedIFramesPage.FindIFrameButton();
+            Assert.Equal("Button Clicked", messageText);
+        }
     }
 }
