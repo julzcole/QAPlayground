@@ -21,7 +21,8 @@ namespace QAPlayground.PageObjects
 
         public void UploadFile()
         {
-            FileInputField.SendKeys(@"C:\Users\xXJul\Pictures\tired.jpg");
+            string relativePath = @"../../../TestingData/Images/tired.jpg";
+            FileInputField.SendKeys(Path.GetFullPath(relativePath));
         }
 
         public string ValidateCaption()
