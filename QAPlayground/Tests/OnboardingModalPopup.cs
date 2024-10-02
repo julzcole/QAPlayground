@@ -1,4 +1,5 @@
 ﻿using OpenQA.Selenium;
+using QAPlayground.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,10 @@ namespace QAPlayground.Tests
 {
     public class OnboardingModalPopup : BaseTest
     {
+        public OnboardingModalPopup(WebDriverFixture fixture) : base(fixture)
+        {
+        }
+
         [Fact]
         public void OnboardingModalPopupTest()
         {

@@ -1,4 +1,5 @@
 ﻿using QAPlayground.PageObjects;
+using QAPlayground.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,10 @@ namespace QAPlayground.Tests
 {
     public class ShadowDOM : BaseTest
     {
+        public ShadowDOM(WebDriverFixture fixture) : base(fixture)
+        {
+        }
+
         [Fact]
         public void ShadowDomTest()
         {

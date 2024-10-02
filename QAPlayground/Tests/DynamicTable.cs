@@ -8,11 +8,16 @@ using System.Threading.Tasks;
 using QAPlayground.WrapperFactory;
 using QAPlayground.TestingData;
 using QAPlayground.PageObjects;
+using QAPlayground.Utilities;
 
 namespace QAPlayground.Tests
 {
     public class DynamicTable : BaseTest
     {
+        public DynamicTable(WebDriverFixture fixture) : base(fixture)
+        {
+        }
+
         [Fact]
         public void DynamicTableTest()
         {

@@ -6,11 +6,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using QAPlayground.PageObjects;
+using QAPlayground.Utilities;
 
 namespace QAPlayground.Tests
 {
     public class TagsInputBox : BaseTest
     {
+        public TagsInputBox(WebDriverFixture fixture) : base(fixture)
+        {
+        }
+
         [Fact]
         public void TagsInputBoxTest()
         {

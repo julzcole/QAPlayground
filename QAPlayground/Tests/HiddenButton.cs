@@ -1,5 +1,6 @@
 ﻿using OpenQA.Selenium;
 using QAPlayground.PageObjects;
+using QAPlayground.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,10 @@ namespace QAPlayground.Tests
 {
     public class HiddenButton : BaseTest
     {
+        public HiddenButton(WebDriverFixture fixture) : base(fixture)
+        {
+        }
+
         [Fact]
         public void HiddenButtonTest()
         {

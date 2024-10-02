@@ -8,11 +8,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using QAPlayground.PageObjects;
+using QAPlayground.Utilities;
 
 namespace QAPlayground.Tests
 {
     public class MultiLevelDropdown : BaseTest
     {
+        public MultiLevelDropdown(WebDriverFixture fixture) : base(fixture)
+        {
+        }
+
         //Navigate into the sub-menus and assert menu items text and links
 
         //Test Setup

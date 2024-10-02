@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QAPlayground.Utilities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,10 @@ namespace QAPlayground.Tests
 {
     public class QRCodeGeneratorTests : BaseTest
     {
+        public QRCodeGeneratorTests(WebDriverFixture fixture) : base(fixture)
+        {
+        }
+
         [Fact]
         public void QRCodeGeneratorTest()
         {

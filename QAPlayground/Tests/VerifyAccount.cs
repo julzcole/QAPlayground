@@ -6,11 +6,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using QAPlayground.PageObjects;
+using QAPlayground.Utilities;
 
 namespace QAPlayground.Tests
 {
     public class VerifyAccount : BaseTest
     {
+        public VerifyAccount(WebDriverFixture fixture) : base(fixture)
+        {
+        }
 
         [Fact]
         public void VerifyAccountTest()
