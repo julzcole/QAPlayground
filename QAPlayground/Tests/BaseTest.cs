@@ -3,7 +3,6 @@ using OpenQA.Selenium.Support.UI;
 using QAPlayground.PageObjects;
 using QAPlayground.TestingData;
 using QAPlayground.Utilities;
-using QAPlayground.WrapperFactory;
 using System;
 using System.Collections.Generic;
 using System.Linq;
