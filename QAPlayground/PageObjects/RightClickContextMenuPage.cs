@@ -56,7 +56,7 @@ namespace QAPlayground.PageObjects
             {
                 js.ExecuteScript(script, randomX, randomY);
                 action.ScrollToElement(_driver.FindElement(By.CssSelector($"li[onclick=\"itemClicked('{menuItems[i]}')\"]"))).Build().Perform();
-                _driver.FindElement(By.CssSelector($"li[onclick=\"itemClicked('{menuItems[i]}')\"]")).Click();
+                js.ExecuteScript("arguments[0].click();", _driver.FindElement(By.CssSelector($"li[onclick=\"itemClicked('{menuItems[i]}')\"]")));
                 actualMessageOptionText.Add(message.Text);
             }
 
@@ -65,7 +65,7 @@ namespace QAPlayground.PageObjects
                 js.ExecuteScript(script, randomX, randomY);
                 action.ScrollToElement(_driver.FindElement(By.CssSelector("li[class='menu-item share']"))).Build().Perform();
                 action.MoveToElement(_driver.FindElement(By.CssSelector("li[class='menu-item share']"))).Build().Perform();
-                _driver.FindElement(By.CssSelector($"li[onclick=\"itemClicked('{shareOptions[i]}')\"]")).Click();
+                js.ExecuteScript("arguments[0].click();", _driver.FindElement(By.CssSelector($"li[onclick=\"itemClicked('{shareOptions[i]}')\"]")));
                 actualMessageOptionText.Add(message.Text);
             }
 
