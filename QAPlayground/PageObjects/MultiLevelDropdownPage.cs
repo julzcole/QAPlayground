@@ -5,6 +5,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace QAPlayground.PageObjects
 {
@@ -37,7 +38,8 @@ namespace QAPlayground.PageObjects
         {
             BackButton.Click();
             wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(AnimalMenuLocator));
-            AnimalsLink.Click();
+            IJavaScriptExecutor js = (IJavaScriptExecutor)_driver;
+            js.ExecuteScript("arguments[0].click();", AnimalsLink);
             return AnimalMenuItems;
         }
     }

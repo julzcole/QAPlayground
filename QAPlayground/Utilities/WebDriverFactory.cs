@@ -19,7 +19,7 @@ namespace QAPlayground.DriverFactory
             {
                 case "chrome":
                     var chromeOptions = new ChromeOptions();
-                    //chromeOptions.AddArgument("headless"); // Optional, for headless mode
+                    chromeOptions.AddArgument("headless"); // Optional, for headless mode
                     downloadDirectory = Path.Combine(Path.GetTempPath(), "Downloads");
                     Directory.CreateDirectory(downloadDirectory);
                     chromeOptions.AddUserProfilePreference("download.default_directory", downloadDirectory); //Sets the default download directory to temp folder
