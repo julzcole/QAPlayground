@@ -1,7 +1,6 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using QAPlayground.TestingData;
-using QAPlayground.WrapperFactory;
 using System;
 using System.Collections.Generic;
 using System.Linq;

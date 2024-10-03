@@ -12,13 +12,17 @@ namespace QAPlayground.DriverFactory
 {
     public class WebDriverFactory
     {
+        private static string downloadDirectory;
         public IWebDriver CreateDriver(string browser)
         {
             switch (browser.ToLower())
             {
                 case "chrome":
                     var chromeOptions = new ChromeOptions();
-                    chromeOptions.AddArgument("headless"); // Optional, for headless mode
+                    //chromeOptions.AddArgument("headless"); // Optional, for headless mode
+                    downloadDirectory = Path.Combine(Path.GetTempPath(), "Downloads");
+                    Directory.CreateDirectory(downloadDirectory);
+                    chromeOptions.AddUserProfilePreference("download.default_directory", downloadDirectory); //Sets the default download directory to temp folder
                     return new ChromeDriver(chromeOptions);
 
                 case "firefox":
@@ -31,6 +35,11 @@ namespace QAPlayground.DriverFactory
                 default:
                     throw new ArgumentException($"Browser {browser} is not supported");
             }
+        }
+
+        public static string GetDownloadDirectory()
+        {
+            return downloadDirectory;
         }
     }
 }
