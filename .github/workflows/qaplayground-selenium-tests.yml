@@ -37,7 +37,7 @@ jobs:
 
     # Execute all unit tests in the solution
     - name: Execute unit tests
-      run: dotnet test
+      run: dotnet test --logger "trx;LogFileName=TestResults/test_results_$(date +'%Y%m%d%H%M%S').trx"
       
     - name: Upload test results
       uses: actions/upload-artifact@v3
