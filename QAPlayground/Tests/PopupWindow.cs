@@ -13,6 +13,10 @@ namespace QAPlayground.Tests
         {
         }
 
+
+        /// <summary>
+        /// Validate text on page when popup window is clicked.
+        /// </summary>
         [Fact]
         public void PopupWindowTest()
         {

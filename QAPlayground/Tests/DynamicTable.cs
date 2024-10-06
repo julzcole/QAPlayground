@@ -17,6 +17,9 @@ namespace QAPlayground.Tests
         {
         }
 
+        /// <summary>
+        /// Finds the table containing Spider-Man and checks if the name is Peter Parker
+        /// </summary>
         [Fact]
         public void DynamicTableTest()
         {

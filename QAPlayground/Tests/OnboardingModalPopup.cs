@@ -14,6 +14,9 @@ namespace QAPlayground.Tests
         {
         }
 
+        /// <summary>
+        /// Validate title based on background color when clicking popup link.
+        /// </summary>
         [Fact]
         public void OnboardingModalPopupTest()
         {

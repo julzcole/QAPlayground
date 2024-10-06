@@ -13,6 +13,9 @@ namespace QAPlayground.Tests
         {
         }
 
+        /// <summary>
+        /// Tests that the total matches what is entered in the budget table rows summed.
+        /// </summary>
         [Fact]
         public void BudgetTrackerTest()
         {

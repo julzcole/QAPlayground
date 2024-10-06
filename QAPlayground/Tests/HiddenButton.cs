@@ -15,6 +15,9 @@ namespace QAPlayground.Tests
         {
         }
 
+        /// <summary>
+        /// Click hidden button and assert that Mission Accomplished is displayed.
+        /// </summary>
         [Fact]
         public void HiddenButtonTest()
         {

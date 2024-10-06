@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using QAPlayground.PageObjects;
 using QAPlayground.Utilities;
+using System.Net.NetworkInformation;
 
 namespace QAPlayground.Tests
 {
@@ -16,12 +17,12 @@ namespace QAPlayground.Tests
         {
         }
 
+        /// <summary>
+        ///Enter valid code by pressing the key-up button or typing number and assert success message
+        /// </summary>
         [Fact]
         public void VerifyAccountTest()
         {
-            /*Enter valid code by pressing the key-up button or 
-             typing number and assert success message*/
-
             var verifyAccountPage = basePage.ClickVerifyAccountLink();
             verifyAccountPage.EnterInputs("9");
             Assert.True(verifyAccountPage.ValidateSuccessMessage());

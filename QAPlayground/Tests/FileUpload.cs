@@ -14,6 +14,9 @@ namespace QAPlayground.Tests
         {
         }
 
+        /// <summary>
+        /// Tests a successful file upload to QAPlayground
+        /// </summary>
         [Fact]
         public void FileUploadTest()
         {

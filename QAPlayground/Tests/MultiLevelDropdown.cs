@@ -18,9 +18,10 @@ namespace QAPlayground.Tests
         {
         }
 
-        //Navigate into the sub-menus and assert menu items text and links
+        /// <summary>
+        ///Navigate into the sub-menus and assert menu items text and links
+        /// </summary>
 
-        //Test Setup
         string baseUrl = "https://qaplayground.dev/apps/multi-level-dropdown/";
         string[] expectedMenuItemText = { "My Tutorial", "HTML", "CSS", "JavaScript", "Awesome!" };
         string[] expectedMenuItemLinks = { "#main", "#!HTML", "#!CSS", "#!JavaScript", "#!Awesome" };

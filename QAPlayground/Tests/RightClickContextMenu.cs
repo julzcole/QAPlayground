@@ -13,6 +13,9 @@ namespace QAPlayground.Tests
         {
         }
 
+        /// <summary>
+        /// Click all links on page and validate link text
+        /// </summary>
         [Fact]
         public void RightClickContextMenuTest()
         {

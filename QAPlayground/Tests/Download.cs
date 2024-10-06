@@ -15,6 +15,9 @@ namespace QAPlayground.Tests
         {
         }
 
+        /// <summary>
+        /// Tests that the sample file is downloaded to the correct directory.
+        /// </summary>
         [Fact]
         public void DownloadTest()
         {

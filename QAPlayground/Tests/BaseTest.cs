@@ -28,12 +28,5 @@ namespace QAPlayground.Tests
             _driver.Navigate().GoToUrl(_testData.Url);
             basePage = new BasePage(_driver);
         }
-
-
-        public void Dispose()
-        {
-            _driver.Quit();
-            _driver.Dispose();
-        }
     }
 }

@@ -13,6 +13,9 @@ namespace QAPlayground.Tests
         {
         }
 
+        /// <summary>
+        /// Validate QR Code is displayed when text is entered and button is clicked
+        /// </summary>
         [Fact]
         public void QRCodeGeneratorTest()
         {

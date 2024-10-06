@@ -13,6 +13,9 @@ namespace QAPlayground.Tests
         {
         }
 
+        /// <summary>
+        /// Clicks stars on page and validates the text and rating counts are displayed.
+        /// </summary>
         [Fact]
         public void StarsRatingTest()
         {

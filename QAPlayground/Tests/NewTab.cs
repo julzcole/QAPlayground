@@ -14,6 +14,10 @@ namespace QAPlayground.Tests
         {
         }
 
+
+        /// <summary>
+        /// Validate title message on new tab displays.
+        /// </summary>
         [Fact]
         public void NewTabTest()
         {

@@ -15,13 +15,15 @@ namespace QAPlayground.DriverFactory
         private static string downloadDirectory;
         public IWebDriver CreateDriver(string browser)
         {
+            //Create a temporary download directory for any tests that download files.
+            downloadDirectory = Path.Combine(Path.GetTempPath(), "Downloads");
+            Directory.CreateDirectory(downloadDirectory);
+
             switch (browser.ToLower())
             {
                 case "chrome":
                     var chromeOptions = new ChromeOptions();
                     chromeOptions.AddArgument("headless"); // Optional, for headless mode
-                    downloadDirectory = Path.Combine(Path.GetTempPath(), "Downloads");
-                    Directory.CreateDirectory(downloadDirectory);
                     chromeOptions.AddUserProfilePreference("download.default_directory", downloadDirectory); //Sets the default download directory to temp folder
                     return new ChromeDriver(chromeOptions);
 
@@ -37,6 +39,7 @@ namespace QAPlayground.DriverFactory
             }
         }
 
+        //Used by tests that need to access the environments download directory specified at runtime
         public static string GetDownloadDirectory()
         {
             return downloadDirectory;

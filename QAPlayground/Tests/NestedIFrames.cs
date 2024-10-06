@@ -13,6 +13,9 @@ namespace QAPlayground.Tests
         {
         }
 
+        /// <summary>
+        /// Validate that the iFrame message displays on button click.
+        /// </summary>
         [Fact]
         public void NestedIFramesTest()
         {

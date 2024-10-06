@@ -16,10 +16,13 @@ namespace QAPlayground.Tests
         {
         }
 
+        /// <summary>
+        ///Add and remove tags and assert tag's presence and count
+        /// </summary>
         [Fact]
         public void TagsInputBoxTest()
         {
-            //Add and remove tags and assert tag's presence and count
+            
             //Setup - May want to parameterize this at some point
             string[] tags = { "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten" };
             

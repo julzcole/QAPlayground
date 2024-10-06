@@ -14,6 +14,9 @@ namespace QAPlayground.Tests
         {
         }
 
+        /// <summary>
+        /// Click all the links and assert the correct title displays.
+        /// </summary>
         [Fact]
         public void NavigationMenuTest()
         {

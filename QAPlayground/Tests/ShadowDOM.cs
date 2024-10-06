@@ -14,6 +14,9 @@ namespace QAPlayground.Tests
         {
         }
 
+        /// <summary>
+        /// Clicks button in shadow DOM and validates that the progress bar is at 95%
+        /// </summary>
         [Fact]
         public void ShadowDomTest()
         {

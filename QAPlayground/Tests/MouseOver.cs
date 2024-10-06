@@ -13,6 +13,9 @@ namespace QAPlayground.Tests
         {
         }
 
+        /// <summary>
+        /// Mouse over the price element and ensure that the price is 24.96
+        /// </summary>
         [Fact]
         public void MouseOverTest()
         {
