@@ -19,12 +19,15 @@ namespace QAPlayground.Tests
         protected BasePage basePage;
         private readonly WebDriverFixture _fixture;
 
+        //Initialize resources used in every test as every test inherits from the base test and the base test creates an instance of WebDriverFixture
         public BaseTest(WebDriverFixture fixture)
-        {
+        {   
+            //Sets the WebDriverFixture and the Test Data as properties of the base test
             _fixture = fixture;
+            _testData = _fixture.GetTestData();
+
+            //Initialize the driver and go to the base URL for QA Playground
             _driver = _fixture.Driver;
-            _testData = TestDataHelper.LoadTestData(Path.Combine(Directory.GetCurrentDirectory(), "TestingData/testData.json"));
-            _driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
             _driver.Navigate().GoToUrl(_testData.Url);
             basePage = new BasePage(_driver);
         }

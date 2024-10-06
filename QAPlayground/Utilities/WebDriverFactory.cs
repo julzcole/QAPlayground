@@ -19,6 +19,7 @@ namespace QAPlayground.DriverFactory
             downloadDirectory = Path.Combine(Path.GetTempPath(), "Downloads");
             Directory.CreateDirectory(downloadDirectory);
 
+            //Selects the webdriver browser option based on the testData.json file
             switch (browser.ToLower())
             {
                 case "chrome":
