@@ -43,4 +43,4 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: Test Results
-        path: ./TestResults
+        path: QAPlayground/TestResults
