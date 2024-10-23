@@ -19,9 +19,20 @@ namespace QAPlayground.Tests
         [Fact]
         public void NestedIFramesTest()
         {
-            var nestedIFramesPage = basePage.ClickNestedIFrameLink();
-            string messageText = nestedIFramesPage.FindIFrameButton();
-            Assert.Equal("Button Clicked", messageText);
+            extentTest = extent.CreateTest(this.GetType().Name);
+
+            try
+            {
+                var nestedIFramesPage = basePage.ClickNestedIFrameLink();
+                string messageText = nestedIFramesPage.FindIFrameButton();
+                Assert.Equal("Button Clicked", messageText);
+                extentTest.Pass("The Nested Iframes test has passed!");
+            }
+            catch (Exception ex)
+            {
+                extentTest.Fail(ex);
+                throw;
+            }
         }
     }
 }

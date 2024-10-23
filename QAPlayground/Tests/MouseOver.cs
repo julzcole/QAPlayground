@@ -19,10 +19,21 @@ namespace QAPlayground.Tests
         [Fact]
         public void MouseOverTest()
         {
-            var mouseOverPage = basePage.ClickMouseHoverLink();
-            var priceElement = mouseOverPage.ValidateMouseOver();
-            Assert.True(priceElement.Displayed);
-            Assert.Equal("$24.96", priceElement.Text);
+            extentTest = extent.CreateTest(this.GetType().Name);
+
+            try
+            {
+                var mouseOverPage = basePage.ClickMouseHoverLink();
+                var priceElement = mouseOverPage.ValidateMouseOver();
+                Assert.True(priceElement.Displayed);
+                Assert.Equal("$24.96", priceElement.Text);
+                extentTest.Pass("The Mouse Over test has passed!");
+            }
+            catch (Exception ex)
+            {
+                extentTest.Fail(ex);
+                throw;
+            }
         }
     }
 }

@@ -19,9 +19,20 @@ namespace QAPlayground.Tests
         [Fact]
         public void QRCodeGeneratorTest()
         {
-            var qrCodeGeneratorPage = basePage.ClickQRCodeGeneratorLink();
-            bool qrCodeIsDisplayed = qrCodeGeneratorPage.ValidateQRCode();
-            Assert.True(qrCodeIsDisplayed);
+            extentTest = extent.CreateTest(this.GetType().Name);
+
+            try
+            {
+                var qrCodeGeneratorPage = basePage.ClickQRCodeGeneratorLink();
+                bool qrCodeIsDisplayed = qrCodeGeneratorPage.ValidateQRCode();
+                Assert.True(qrCodeIsDisplayed);
+                extentTest.Pass("The QR Code Generator test has passed!");
+            }
+            catch (Exception ex)
+            {
+                extentTest.Fail(ex);
+                throw;
+            }
         }
     }
 }

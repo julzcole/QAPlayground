@@ -20,17 +20,29 @@ namespace QAPlayground.Tests
         [Fact]
         public void OnboardingModalPopupTest()
         {
-            var onboardingModalPopupPage = basePage.ClickOnboardingModalPopup();
-            bool isWhite = onboardingModalPopupPage.GetBackgroundColor();
-            string titleText = onboardingModalPopupPage.ValidateTitleText(isWhite);
+            extentTest = extent.CreateTest(this.GetType().Name);
 
-            if(isWhite)
+            try
             {
-                Assert.Contains("Welcome Peter Parker!", titleText);
+                var onboardingModalPopupPage = basePage.ClickOnboardingModalPopup();
+                bool isWhite = onboardingModalPopupPage.GetBackgroundColor();
+                string titleText = onboardingModalPopupPage.ValidateTitleText(isWhite);
+
+                if (isWhite)
+                {
+                    Assert.Contains("Welcome Peter Parker!", titleText);
+                }
+                else
+                {
+                    Assert.Contains("Application successfully launched!", titleText);
+                }
+
+                extentTest.Pass("The Onboarding Modal Popup test has passed!");
             }
-            else
+            catch (Exception ex)
             {
-                Assert.Contains("Application successfully launched!", titleText);
+                extentTest.Fail(ex);
+                throw;
             }
         }
     }

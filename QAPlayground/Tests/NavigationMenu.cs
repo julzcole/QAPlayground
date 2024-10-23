@@ -20,16 +20,28 @@ namespace QAPlayground.Tests
         [Fact]
         public void NavigationMenuTest()
         {
-            string[] links = { "About", "Blog", "Portfolio", "Contact" };
-            string[] content = {"Welcome to the About Page", "Welcome to the Blog Page",
-                "Welcome to the Portfolio Page", "Welcome to the Contact Page"};
-            var navigationMenuPage = basePage.ClickNavigationMenuLink();
+            extentTest = extent.CreateTest(this.GetType().Name);
 
-            for (int i = 0; i < links.Length; i++)
+            try
             {
-                string titleText = navigationMenuPage.ValidateLinksAndContentTitleText(links[i]);
-                Assert.Equal(content[i], titleText);
-                navigationMenuPage.ClickBackButton();
+                string[] links = { "About", "Blog", "Portfolio", "Contact" };
+                string[] content = {"Welcome to the About Page", "Welcome to the Blog Page",
+                "Welcome to the Portfolio Page", "Welcome to the Contact Page"};
+                var navigationMenuPage = basePage.ClickNavigationMenuLink();
+
+                for (int i = 0; i < links.Length; i++)
+                {
+                    string titleText = navigationMenuPage.ValidateLinksAndContentTitleText(links[i]);
+                    Assert.Equal(content[i], titleText);
+                    navigationMenuPage.ClickBackButton();
+                }
+
+                extentTest.Pass("The Navigation Menu test has passed");
+            }
+            catch (Exception ex)
+            {
+                extentTest.Fail(ex);
+                throw;
             }
         }
     }

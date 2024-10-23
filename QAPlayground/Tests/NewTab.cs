@@ -21,9 +21,20 @@ namespace QAPlayground.Tests
         [Fact]
         public void NewTabTest()
         {
-            var newTabPage = basePage.ClickNewTabLink();
-            string newTabTitle = newTabPage.ValidateNewTabOpened();
-            Assert.Equal("Welcome to the new page!", newTabTitle);
+            extentTest = extent.CreateTest(this.GetType().Name);
+
+            try
+            {
+                var newTabPage = basePage.ClickNewTabLink();
+                string newTabTitle = newTabPage.ValidateNewTabOpened();
+                Assert.Equal("Welcome to the new page!", newTabTitle);
+                extentTest.Pass("The New Tab test has passed!");
+            }
+            catch (Exception ex)
+            {
+                extentTest.Fail(ex);
+                throw;
+            }
         }
     }
 }

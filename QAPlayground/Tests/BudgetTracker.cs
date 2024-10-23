@@ -19,14 +19,28 @@ namespace QAPlayground.Tests
         [Fact]
         public void BudgetTrackerTest()
         {
-            string totalFieldText;
-            var budgetTrackerPage = basePage.ClickBudgetTrackerLink();
-            totalFieldText = budgetTrackerPage.EnterBudgetData();
-            Assert.Equal("$30.00", totalFieldText);
-            totalFieldText = budgetTrackerPage.RemoveTableRow(3);
-            Assert.Equal("$20.00", totalFieldText);
-            totalFieldText = budgetTrackerPage.ModifyTableRow(2,20);
-            Assert.Equal("$30.00", totalFieldText);
+            //Create a test entry for the extent report
+            extentTest = extent.CreateTest(this.GetType().Name);
+
+            //Test Actions
+            try
+            {
+                string totalFieldText;
+                var budgetTrackerPage = basePage.ClickBudgetTrackerLink();
+                totalFieldText = budgetTrackerPage.EnterBudgetData();
+                Assert.Equal("$30.00", totalFieldText);
+                totalFieldText = budgetTrackerPage.RemoveTableRow(3);
+                Assert.Equal("$20.00", totalFieldText);
+                totalFieldText = budgetTrackerPage.ModifyTableRow(2, 20);
+                Assert.Equal("$30.00", totalFieldText);
+                extentTest.Pass("Budget Tracker test has passed!");
+            }
+            catch (Exception ex)
+            {
+                extentTest.Fail(ex);
+                throw;
+            }
+
         }
     }
 }

@@ -1,4 +1,6 @@
-﻿using OpenQA.Selenium;
+﻿using AventStack.ExtentReports;
+using AventStack.ExtentReports.Reporter;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using QAPlayground.PageObjects;
 using QAPlayground.TestingData;
@@ -12,12 +14,15 @@ using Xunit.Abstractions;
 
 namespace QAPlayground.Tests
 {
-    public class BaseTest : IClassFixture<WebDriverFixture>
+    public class BaseTest : IClassFixture<WebDriverFixture>, IDisposable
     {
         protected IWebDriver _driver;
         private TestData _testData;
         protected BasePage basePage;
         private readonly WebDriverFixture _fixture;
+        protected static ExtentReports extent;
+        protected ExtentTest extentTest;
+        private static bool _reportInitialized = false; //to ensure that the report is not created multiple times
 
         //Initialize resources used in every test as every test inherits from the base test and the base test creates an instance of WebDriverFixture
         public BaseTest(WebDriverFixture fixture)
@@ -26,10 +31,37 @@ namespace QAPlayground.Tests
             _fixture = fixture;
             _testData = _fixture.GetTestData();
 
+            //Initialize Extent Report for all tests in this run if not already done for this test execution
+            if (!_reportInitialized)
+            {
+                SetUpExtentReports();
+                _reportInitialized = true;
+            }
+            
             //Initialize the driver and go to the base URL for QA Playground
             _driver = _fixture.Driver;
             _driver.Navigate().GoToUrl(_testData.Url);
             basePage = new BasePage(_driver);
+        }
+
+        //Creates the extent reports
+        private void SetUpExtentReports()
+        {
+            //create a dynamic report path for pipeline runs
+            var reportPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "TestResults", "ExtentReport" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".html");
+            
+            //Ensure the directory exists
+            Directory.CreateDirectory(Path.GetDirectoryName(reportPath));
+
+            extent = new ExtentReports();
+            var htmlReporter = new ExtentSparkReporter(reportPath);
+            extent.AttachReporter(htmlReporter);
+        }
+
+        //Dispose Extent Reports and creates the report file
+        public void Dispose()
+        {
+            extent.Flush();
         }
     }
 }
