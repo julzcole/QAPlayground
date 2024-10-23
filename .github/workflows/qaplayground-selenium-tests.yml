@@ -44,3 +44,9 @@ jobs:
       with:
         name: Test Results
         path: QAPlayground/TestResults
+        
+    - name: Upload Extent Reports
+      uses: actions/upload-artifact@v3
+      with:
+        name: Test Results
+        path: TestResults/ExtentReport*.html
