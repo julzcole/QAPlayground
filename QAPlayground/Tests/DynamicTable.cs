@@ -23,10 +23,22 @@ namespace QAPlayground.Tests
         [Fact]
         public void DynamicTableTest()
         {
-            var basePage = new BasePage(_driver);
-            var dynamicTablePage = basePage.ClickDynamicTableLink();
-            string spiderManName = dynamicTablePage.FindSpiderMan();
-            Assert.Equal("Peter Parker", spiderManName);
+            //Create the extent report for this test
+            extentTest = extent.CreateTest(this.GetType().Name);
+
+            try
+            {
+                var basePage = new BasePage(_driver);
+                var dynamicTablePage = basePage.ClickDynamicTableLink();
+                string spiderManName = dynamicTablePage.FindSpiderMan();
+                Assert.Equal("Peter Parker", spiderManName);
+                extentTest.Pass("The DynamicTable test has passed!");
+            }
+            catch (Exception ex)
+            {
+                extentTest.Fail(ex);
+                throw;
+            }
         }
     }
 }

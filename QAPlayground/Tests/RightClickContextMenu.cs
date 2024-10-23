@@ -19,8 +19,12 @@ namespace QAPlayground.Tests
         [Fact]
         public void RightClickContextMenuTest()
         {
-            //Arrange
-            string[] expectedMessages = { 
+            extentTest = extent.CreateTest(this.GetType().Name);
+
+            try
+            {
+                //Arrange
+                string[] expectedMessages = {
                 "Menu item Settings clicked",
                 "Menu item Delete clicked",
                 "Menu item Rename clicked",
@@ -31,17 +35,25 @@ namespace QAPlayground.Tests
                 "Menu item Dribble clicked",
                 "Menu item Telegram clicked"
             };
-            string[] menuItems = { "Settings", "Delete", "Rename", "Get Link", "Preview" };
-            string[] shareOptions = { "Twitter", "Instagram", "Dribble", "Telegram" };
-            var rightClickContextMenuPage = basePage.ClickRightClickContextMenuLink();
-            
-            //Act
-            List<string> actualMessageText = rightClickContextMenuPage.RightClickContextMenu(menuItems, shareOptions);
+                string[] menuItems = { "Settings", "Delete", "Rename", "Get Link", "Preview" };
+                string[] shareOptions = { "Twitter", "Instagram", "Dribble", "Telegram" };
+                var rightClickContextMenuPage = basePage.ClickRightClickContextMenuLink();
 
-            //Assert
-            for (int i = 0; i < expectedMessages.Length; i++)
+                //Act
+                List<string> actualMessageText = rightClickContextMenuPage.RightClickContextMenu(menuItems, shareOptions);
+
+                //Assert
+                for (int i = 0; i < expectedMessages.Length; i++)
+                {
+                    Assert.Equal(expectedMessages[i], actualMessageText[i]);
+                }
+
+                extentTest.Pass("The Right Click Context Menu test has passed!");
+            }
+            catch (Exception ex)
             {
-                Assert.Equal(expectedMessages[i], actualMessageText[i]);
+                extentTest.Fail(ex);
+                throw;
             }
 
         }

@@ -20,9 +20,21 @@ namespace QAPlayground.Tests
         [Fact]
         public void PopupWindowTest()
         {
-            var popupWindowPage = basePage.ClickPopupWindowLink();
-            string infoText = popupWindowPage.ValidatePopupWindow();
-            Assert.Equal("Button Clicked", infoText);
+            extentTest = extent.CreateTest(this.GetType().Name);
+
+            try
+            {
+                var popupWindowPage = basePage.ClickPopupWindowLink();
+                string infoText = popupWindowPage.ValidatePopupWindow();
+                Assert.Equal("Button Clicked", infoText);
+                extentTest.Pass("The Popup Window test has passed!");
+            }
+            catch (Exception ex)
+            {
+                extentTest.Fail(ex);
+                throw;
+            }
+
         }
     }
 }

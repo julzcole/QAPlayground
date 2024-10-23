@@ -20,10 +20,22 @@ namespace QAPlayground.Tests
         [Fact]
         public void FileUploadTest()
         {
-            var fileUploadPage = basePage.ClickUploadFileLink();
-            fileUploadPage.UploadFile();
-            string caption = fileUploadPage.ValidateCaption();
-            Assert.Equal("tired.jpg", caption);
+            //Create the extent report for this test
+            extentTest = extent.CreateTest(this.GetType().Name);
+
+            try
+            {
+                var fileUploadPage = basePage.ClickUploadFileLink();
+                fileUploadPage.UploadFile();
+                string caption = fileUploadPage.ValidateCaption();
+                Assert.Equal("tired.jpg", caption);
+                extentTest.Pass("The File Upload Test has passed!");
+            }
+            catch (Exception ex)
+            {
+                extentTest.Fail(ex);
+                throw;
+            }
         }
     }
 }

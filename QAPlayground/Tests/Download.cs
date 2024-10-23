@@ -21,15 +21,26 @@ namespace QAPlayground.Tests
         [Fact]
         public void DownloadTest()
         {
-            var fileDownloadPage = basePage.ClickDownloadFileLink();
-            fileDownloadPage.DownloadFile();
-            string downloadedFile = Path.Combine(WebDriverFactory.GetDownloadDirectory(), "sample.pdf");
-            Thread.Sleep(2000);
-            Assert.True(File.Exists(downloadedFile));
-
-            if (File.Exists(downloadedFile))
+            //Create the extent report for this test
+            extentTest = extent.CreateTest(this.GetType().Name);
+            try
             {
-                File.Delete(downloadedFile);
+                var fileDownloadPage = basePage.ClickDownloadFileLink();
+                fileDownloadPage.DownloadFile();
+                string downloadedFile = Path.Combine(WebDriverFactory.GetDownloadDirectory(), "sample.pdf");
+                Thread.Sleep(2000);
+                Assert.True(File.Exists(downloadedFile));
+
+                if (File.Exists(downloadedFile))
+                {
+                    File.Delete(downloadedFile);
+                }
+                extentTest.Pass("The Download test has passed!");
+            }
+            catch(Exception ex)
+            {
+                extentTest.Fail(ex);
+                throw;
             }
         }
     }

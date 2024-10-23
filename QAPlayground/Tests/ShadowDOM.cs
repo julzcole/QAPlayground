@@ -20,9 +20,20 @@ namespace QAPlayground.Tests
         [Fact]
         public void ShadowDomTest()
         {
-            var shadowDOMPage = basePage.ClickShadowDOMLink();
-            string shadowProgressBar = shadowDOMPage.FindShadowButton();
-            Assert.Contains("95", shadowProgressBar);
+            extentTest = extent.CreateTest(this.GetType().Name);
+
+            try
+            {
+                var shadowDOMPage = basePage.ClickShadowDOMLink();
+                string shadowProgressBar = shadowDOMPage.FindShadowButton();
+                Assert.Contains("95", shadowProgressBar);
+                extentTest.Pass("The ShadowDOM test has passed!");
+            }
+            catch (Exception ex)
+            {
+                extentTest.Fail(ex);
+                throw;
+            }
         }
     }
 }

@@ -31,22 +31,34 @@ namespace QAPlayground.Tests
         [Fact]
         public void MultiLevelDropdownTest()
         {
-            var multiLevelDropdownPage = basePage.ClickMultiLevelDropdownLink();
-            ReadOnlyCollection<IWebElement> settingsMenuItems = multiLevelDropdownPage.ValidateSettingsMenuItems();
+            extentTest = extent.CreateTest(this.GetType().Name);
 
-            for (int i = 0; i < settingsMenuItems.Count; i++)
+            try
             {
-                Assert.Equal(expectedMenuItemText[i], settingsMenuItems[i].Text);
-                Assert.Equal(baseUrl + expectedMenuItemLinks[i], settingsMenuItems[i].GetAttribute("href").ToString());
+                var multiLevelDropdownPage = basePage.ClickMultiLevelDropdownLink();
+                ReadOnlyCollection<IWebElement> settingsMenuItems = multiLevelDropdownPage.ValidateSettingsMenuItems();
+
+                for (int i = 0; i < settingsMenuItems.Count; i++)
+                {
+                    Assert.Equal(expectedMenuItemText[i], settingsMenuItems[i].Text);
+                    Assert.Equal(baseUrl + expectedMenuItemLinks[i], settingsMenuItems[i].GetAttribute("href").ToString());
+                }
+
+
+                ReadOnlyCollection<IWebElement> animalMenuItems = multiLevelDropdownPage.ValidateAnimalMenuItems();
+
+                for (int i = 0; i < animalMenuItems.Count; i++)
+                {
+                    Assert.Contains(expectedAnimalText[i], animalMenuItems[i].Text);
+                    Assert.Equal(baseUrl + expectedAnimalLinks[i], animalMenuItems[i].GetAttribute("href").ToString());
+                }
+
+                extentTest.Pass("The Multilevel Dropdown test has passed!");
             }
-
-            
-            ReadOnlyCollection<IWebElement> animalMenuItems = multiLevelDropdownPage.ValidateAnimalMenuItems();
-            
-            for (int i = 0;i < animalMenuItems.Count; i++)
+            catch (Exception ex)
             {
-                Assert.Contains(expectedAnimalText[i], animalMenuItems[i].Text);
-                Assert.Equal(baseUrl + expectedAnimalLinks[i], animalMenuItems[i].GetAttribute("href").ToString());
+                extentTest.Fail(ex);
+                throw;
             }
         }
         

@@ -23,10 +23,20 @@ namespace QAPlayground.Tests
         [Fact]
         public void VerifyAccountTest()
         {
-            var verifyAccountPage = basePage.ClickVerifyAccountLink();
-            verifyAccountPage.EnterInputs("9");
-            Assert.True(verifyAccountPage.ValidateSuccessMessage());
+            extentTest = extent.CreateTest(this.GetType().Name);
 
+            try
+            {
+                var verifyAccountPage = basePage.ClickVerifyAccountLink();
+                verifyAccountPage.EnterInputs("9");
+                Assert.True(verifyAccountPage.ValidateSuccessMessage());
+                extentTest.Pass("The Verify Account test has passed!");
+            }
+            catch (Exception ex)
+            {
+                extentTest.Fail(ex);
+                throw;
+            }
         }
     }
 }

@@ -22,16 +22,26 @@ namespace QAPlayground.Tests
         [Fact]
         public void TagsInputBoxTest()
         {
-            
-            //Setup - May want to parameterize this at some point
-            string[] tags = { "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten" };
-            
-            //Actions
-            var tagsInputBoxPage = basePage.ClickTagsInputBoxLink();
-            tagsInputBoxPage.ClickAllIcons();
-            Assert.Equal("10", tagsInputBoxPage.ValidateRemainingTags());
-            tagsInputBoxPage.EnterTags(tags);
-            Assert.Equal("0", tagsInputBoxPage.ValidateRemainingTags());
+            extentTest = extent.CreateTest(this.GetType().Name);
+
+            try
+            {
+                //Setup - May want to parameterize this at some point
+                string[] tags = { "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten" };
+
+                //Actions
+                var tagsInputBoxPage = basePage.ClickTagsInputBoxLink();
+                tagsInputBoxPage.ClickAllIcons();
+                Assert.Equal("10", tagsInputBoxPage.ValidateRemainingTags());
+                tagsInputBoxPage.EnterTags(tags);
+                Assert.Equal("0", tagsInputBoxPage.ValidateRemainingTags());
+                extentTest.Pass("The Tags Input Box test has passed!");
+            }
+            catch (Exception ex)
+            {
+                extentTest.Fail(ex);
+                throw;
+            }
         }
     }
 }
