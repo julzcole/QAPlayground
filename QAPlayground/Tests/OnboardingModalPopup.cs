@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace QAPlayground.Tests
 {
+    [Collection("SequentialTests")]
     public class OnboardingModalPopup : BaseTest
     {
         public OnboardingModalPopup(WebDriverFixture fixture) : base(fixture)

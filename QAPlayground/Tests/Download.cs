@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace QAPlayground.Tests
 {
+    [Collection("SequentialTests")]
     public class Download : BaseTest
     {
-
         public Download(WebDriverFixture fixture) : base(fixture)
         {
         }

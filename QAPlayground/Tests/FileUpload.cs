@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace QAPlayground.Tests
 {
+    [Collection("SequentialTests")]
     public class FileUpload : BaseTest
     {
         public FileUpload(WebDriverFixture fixture) : base(fixture)

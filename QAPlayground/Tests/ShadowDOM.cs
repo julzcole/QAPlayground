@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace QAPlayground.Tests
 {
+    [Collection("SequentialTests")]
     public class ShadowDOM : BaseTest
     {
         public ShadowDOM(WebDriverFixture fixture) : base(fixture)

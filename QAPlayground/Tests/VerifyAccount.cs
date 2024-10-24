@@ -11,6 +11,7 @@ using System.Net.NetworkInformation;
 
 namespace QAPlayground.Tests
 {
+    [Collection("SequentialTests")]
     public class VerifyAccount : BaseTest
     {
         public VerifyAccount(WebDriverFixture fixture) : base(fixture)

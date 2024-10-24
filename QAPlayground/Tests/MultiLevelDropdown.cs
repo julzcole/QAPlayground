@@ -12,6 +12,7 @@ using QAPlayground.Utilities;
 
 namespace QAPlayground.Tests
 {
+    [Collection("SequentialTests")]
     public class MultiLevelDropdown : BaseTest
     {
         public MultiLevelDropdown(WebDriverFixture fixture) : base(fixture)

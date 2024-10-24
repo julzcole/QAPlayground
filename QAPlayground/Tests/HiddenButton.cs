@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace QAPlayground.Tests
 {
+    [Collection("SequentialTests")]
     public class HiddenButton : BaseTest
     {
         public HiddenButton(WebDriverFixture fixture) : base(fixture)

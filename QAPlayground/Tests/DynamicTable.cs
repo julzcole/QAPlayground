@@ -11,6 +11,7 @@ using QAPlayground.Utilities;
 
 namespace QAPlayground.Tests
 {
+    [Collection("SequentialTests")]
     public class DynamicTable : BaseTest
     {
         public DynamicTable(WebDriverFixture fixture) : base(fixture)

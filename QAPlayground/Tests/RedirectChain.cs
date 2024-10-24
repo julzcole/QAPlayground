@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace QAPlayground.Tests
 {
+    [Collection("SequentialTests")]
     public class RedirectChain : BaseTest
     {
         public RedirectChain(WebDriverFixture fixture) : base(fixture)

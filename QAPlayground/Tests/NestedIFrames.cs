@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace QAPlayground.Tests
 {
+    [Collection("SequentialTests")]
     public class NestedIFrames : BaseTest
     {
         public NestedIFrames(WebDriverFixture fixture) : base(fixture)

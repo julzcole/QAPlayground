@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace QAPlayground.Tests
 {
+    [Collection("SequentialTests")]
     internal class SortableList
     {
     }

@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace QAPlayground.Tests
 {
+    [Collection("SequentialTests")]
     public class MouseOver : BaseTest
     {
         public MouseOver(WebDriverFixture fixture) : base(fixture)

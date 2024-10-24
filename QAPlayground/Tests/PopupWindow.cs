@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace QAPlayground.Tests
 {
+    [Collection("SequentialTests")]
     public class PopupWindow : BaseTest
     {
         public PopupWindow(WebDriverFixture fixture) : base(fixture)

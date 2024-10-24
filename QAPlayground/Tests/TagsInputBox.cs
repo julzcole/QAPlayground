@@ -10,6 +10,7 @@ using QAPlayground.Utilities;
 
 namespace QAPlayground.Tests
 {
+    [Collection("SequentialTests")]
     public class TagsInputBox : BaseTest
     {
         public TagsInputBox(WebDriverFixture fixture) : base(fixture)

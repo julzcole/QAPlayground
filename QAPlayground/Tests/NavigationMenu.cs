@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace QAPlayground.Tests
 {
+    [Collection("SequentialTests")]
     public class NavigationMenu : BaseTest
     {
         public NavigationMenu(WebDriverFixture fixture) : base(fixture)

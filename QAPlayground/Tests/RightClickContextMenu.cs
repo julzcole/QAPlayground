@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace QAPlayground.Tests
 {
+    [Collection("SequentialTests")]
     public class RightClickContextMenu : BaseTest
     {
         public RightClickContextMenu(WebDriverFixture fixture) : base(fixture)

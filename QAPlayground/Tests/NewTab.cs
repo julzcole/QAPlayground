@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace QAPlayground.Tests
 {
+    [Collection("SequentialTests")]
     public class NewTab : BaseTest
     {
         public NewTab(WebDriverFixture fixture) : base(fixture)

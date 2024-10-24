@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace QAPlayground.Tests
 {
+    [Collection("SequentialTests")]
     public class Geolocation : BaseTest
     {
         public Geolocation(WebDriverFixture fixture) : base(fixture)
