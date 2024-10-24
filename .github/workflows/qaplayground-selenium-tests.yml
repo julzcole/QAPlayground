@@ -43,7 +43,7 @@ jobs:
       run: pwd
 
     - name: List files in TestResults directory
-      run: ls QAPlayground/QAPlayground/bin/Debug/net6.0/TestResults
+      run: ls /bin/Debug/net6.0/TestResults
       
     - name: Upload test results
       uses: actions/upload-artifact@v3
