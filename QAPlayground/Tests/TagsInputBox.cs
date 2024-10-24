@@ -36,11 +36,13 @@ namespace QAPlayground.Tests
                 Assert.Equal("10", tagsInputBoxPage.ValidateRemainingTags());
                 tagsInputBoxPage.EnterTags(tags);
                 Assert.Equal("0", tagsInputBoxPage.ValidateRemainingTags());
-                extentTest.Pass("The Tags Input Box test has passed!");
+                string screenshotPath = CaptureScreenshot(_driver, "TagsInputBox_Pass");
+                extentTest.Pass("The Tags Input Box test has passed!").AddScreenCaptureFromPath(screenshotPath);
             }
             catch (Exception ex)
             {
-                extentTest.Fail(ex);
+                string screenshotPath = CaptureScreenshot(_driver, "TagsInputBox_Fail");
+                extentTest.Fail(ex).AddScreenCaptureFromPath(screenshotPath);
                 throw;
             }
         }

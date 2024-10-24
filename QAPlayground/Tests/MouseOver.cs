@@ -28,11 +28,13 @@ namespace QAPlayground.Tests
                 var priceElement = mouseOverPage.ValidateMouseOver();
                 Assert.True(priceElement.Displayed);
                 Assert.Equal("$24.96", priceElement.Text);
-                extentTest.Pass("The Mouse Over test has passed!");
+                string screenshotPath = CaptureScreenshot(_driver, "MouseOver_Pass");
+                extentTest.Pass("The Mouse Over test has passed!").AddScreenCaptureFromPath(screenshotPath);
             }
             catch (Exception ex)
             {
-                extentTest.Fail(ex);
+                string screenshotPath = CaptureScreenshot(_driver, "MouseOver_Fail");
+                extentTest.Fail(ex).AddScreenCaptureFromPath(screenshotPath);
                 throw;
             }
         }

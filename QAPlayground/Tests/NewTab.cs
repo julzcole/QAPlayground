@@ -29,11 +29,13 @@ namespace QAPlayground.Tests
                 var newTabPage = basePage.ClickNewTabLink();
                 string newTabTitle = newTabPage.ValidateNewTabOpened();
                 Assert.Equal("Welcome to the new page!", newTabTitle);
-                extentTest.Pass("The New Tab test has passed!");
+                string screenshotPath = CaptureScreenshot(_driver, "NewTab_Pass");
+                extentTest.Pass("The New Tab test has passed!").AddScreenCaptureFromPath(screenshotPath);
             }
             catch (Exception ex)
             {
-                extentTest.Fail(ex);
+                string screenshotPath = CaptureScreenshot(_driver, "NewTab_Fail");
+                extentTest.Fail(ex).AddScreenCaptureFromPath(screenshotPath);
                 throw;
             }
         }

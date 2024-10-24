@@ -31,11 +31,13 @@ namespace QAPlayground.Tests
                 var verifyAccountPage = basePage.ClickVerifyAccountLink();
                 verifyAccountPage.EnterInputs("9");
                 Assert.True(verifyAccountPage.ValidateSuccessMessage());
-                extentTest.Pass("The Verify Account test has passed!");
+                string screenshotPath = CaptureScreenshot(_driver, "VerifyAccount_Pass");
+                extentTest.Pass("The Verify Account test has passed!").AddScreenCaptureFromPath(screenshotPath);
             }
             catch (Exception ex)
             {
-                extentTest.Fail(ex);
+                string screenshotPath = CaptureScreenshot(_driver, "VerifyAccount_Fail");
+                extentTest.Fail(ex).AddScreenCaptureFromPath(screenshotPath);
                 throw;
             }
         }

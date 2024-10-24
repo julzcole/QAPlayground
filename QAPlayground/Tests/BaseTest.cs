@@ -1,12 +1,14 @@
 ﻿using AventStack.ExtentReports;
 using AventStack.ExtentReports.Reporter;
 using OpenQA.Selenium;
+using OpenQA.Selenium.DevTools.V124.HeadlessExperimental;
 using OpenQA.Selenium.Support.UI;
 using QAPlayground.PageObjects;
 using QAPlayground.TestingData;
 using QAPlayground.Utilities;
 using System;
 using System.Collections.Generic;
+using System.Drawing.Imaging;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -56,6 +58,22 @@ namespace QAPlayground.Tests
             extent = new ExtentReports();
             var htmlReporter = new ExtentSparkReporter(reportPath);
             extent.AttachReporter(htmlReporter);
+        }
+
+        //Used by test classes to capture a screenshot on test pass and failure
+        public string CaptureScreenshot(IWebDriver driver, string screenshotName)
+        {
+            ITakesScreenshot ts = (ITakesScreenshot)driver;
+            Screenshot screenshot = ts.GetScreenshot();
+            string filePath = Path.Combine(Directory.GetCurrentDirectory(), "Screenshots", screenshotName + ".png");
+
+            if (!Directory.Exists(Path.GetDirectoryName(filePath)))
+            {
+                Directory.CreateDirectory(Path.GetDirectoryName(filePath));
+            }
+
+            screenshot.SaveAsFile(filePath);
+            return filePath;
         }
 
         //Dispose Extent Reports and creates the report file

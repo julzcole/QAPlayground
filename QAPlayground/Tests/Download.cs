@@ -35,11 +35,13 @@ namespace QAPlayground.Tests
                 {
                     File.Delete(downloadedFile);
                 }
-                extentTest.Pass("The Download test has passed!");
+                string screenshotPath = CaptureScreenshot(_driver, "DownloadTest_Pass");
+                extentTest.Pass("The Download test has passed!").AddScreenCaptureFromPath(screenshotPath);
             }
             catch(Exception ex)
             {
-                extentTest.Fail(ex);
+                string screenshotPath = CaptureScreenshot(_driver, "DownloadTest_Fail");
+                extentTest.Fail(ex).AddScreenCaptureFromPath(screenshotPath);
                 throw;
             }
         }

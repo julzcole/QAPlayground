@@ -27,11 +27,13 @@ namespace QAPlayground.Tests
                 var qrCodeGeneratorPage = basePage.ClickQRCodeGeneratorLink();
                 bool qrCodeIsDisplayed = qrCodeGeneratorPage.ValidateQRCode();
                 Assert.True(qrCodeIsDisplayed);
-                extentTest.Pass("The QR Code Generator test has passed!");
+                string screenshotPath = CaptureScreenshot(_driver, "QRCode_Pass");
+                extentTest.Pass("The QR Code Generator test has passed!").AddScreenCaptureFromPath(screenshotPath);
             }
             catch (Exception ex)
             {
-                extentTest.Fail(ex);
+                string screenshotPath = CaptureScreenshot(_driver, "QRCode_Fail");
+                extentTest.Fail(ex).AddScreenCaptureFromPath(screenshotPath);
                 throw;
             }
         }

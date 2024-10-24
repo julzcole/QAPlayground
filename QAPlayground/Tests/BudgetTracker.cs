@@ -33,11 +33,13 @@ namespace QAPlayground.Tests
                 Assert.Equal("$20.00", totalFieldText);
                 totalFieldText = budgetTrackerPage.ModifyTableRow(2, 20);
                 Assert.Equal("$30.00", totalFieldText);
-                extentTest.Pass("Budget Tracker test has passed!");
+                string screenshotPath = CaptureScreenshot(_driver, "BudgetTracker_Pass");
+                extentTest.Pass("Budget Tracker test has passed!").AddScreenCaptureFromPath(screenshotPath);
             }
             catch (Exception ex)
             {
-                extentTest.Fail(ex);
+                string screenshotPath = CaptureScreenshot(_driver, "BudgetTracker_Fail");
+                extentTest.Fail(ex).AddScreenCaptureFromPath(screenshotPath);
                 throw;
             }
 

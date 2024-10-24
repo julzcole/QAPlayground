@@ -37,11 +37,13 @@ namespace QAPlayground.Tests
                     navigationMenuPage.ClickBackButton();
                 }
 
-                extentTest.Pass("The Navigation Menu test has passed");
+                string screenshotPath = CaptureScreenshot(_driver, "NavigationMenu_Pass");
+                extentTest.Pass("The Navigation Menu test has passed").AddScreenCaptureFromPath(screenshotPath);
             }
             catch (Exception ex)
             {
-                extentTest.Fail(ex);
+                string screenshotPath = CaptureScreenshot(_driver, "NavigationMenu_Fail");
+                extentTest.Fail(ex).AddScreenCaptureFromPath(screenshotPath);
                 throw;
             }
         }

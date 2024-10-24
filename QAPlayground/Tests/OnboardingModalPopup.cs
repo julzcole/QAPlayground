@@ -38,10 +38,12 @@ namespace QAPlayground.Tests
                     Assert.Contains("Application successfully launched!", titleText);
                 }
 
+                string screenshotPath = CaptureScreenshot(_driver, "OnboardingModalPopup_Pass");
                 extentTest.Pass("The Onboarding Modal Popup test has passed!");
             }
             catch (Exception ex)
             {
+                string screenshotPath = CaptureScreenshot(_driver, "OnboardingModalPopup_Fail");
                 extentTest.Fail(ex);
                 throw;
             }

@@ -54,11 +54,13 @@ namespace QAPlayground.Tests
                     Assert.Equal(baseUrl + expectedAnimalLinks[i], animalMenuItems[i].GetAttribute("href").ToString());
                 }
 
-                extentTest.Pass("The Multilevel Dropdown test has passed!");
+                string screenshotPath = CaptureScreenshot(_driver, "MultilevelDropdown_Pass");
+                extentTest.Pass("The Multilevel Dropdown test has passed!").AddScreenCaptureFromPath(screenshotPath);
             }
             catch (Exception ex)
             {
-                extentTest.Fail(ex);
+                string screenshotPath = CaptureScreenshot(_driver, "MultilevelDropdown_Pass");
+                extentTest.Fail(ex).AddScreenCaptureFromPath(screenshotPath);
                 throw;
             }
         }

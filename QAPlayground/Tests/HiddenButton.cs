@@ -29,11 +29,13 @@ namespace QAPlayground.Tests
                 var hiddenButtonPage = basePage.ClickHiddenButtonLink();
                 string infoText = hiddenButtonPage.ValidateButtonClick();
                 Assert.Contains("Mission accomplished", infoText);
+                string screenshotPath = CaptureScreenshot(_driver, "HiddenButton_Pass");
                 extentTest.Pass("The Hidden Button test has passed!");
             }
             catch (Exception ex)
             {
-                extentTest.Fail(ex);
+                string screenshotPath = CaptureScreenshot(_driver, "HiddenButton_Fail");
+                extentTest.Fail(ex).AddScreenCaptureFromPath(screenshotPath);
                 throw;
             }
         }

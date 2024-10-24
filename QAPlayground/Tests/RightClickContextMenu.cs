@@ -49,11 +49,13 @@ namespace QAPlayground.Tests
                     Assert.Equal(expectedMessages[i], actualMessageText[i]);
                 }
 
-                extentTest.Pass("The Right Click Context Menu test has passed!");
+                string screenshotPath = CaptureScreenshot(_driver, "RightClickContext_Pass");
+                extentTest.Pass("The Right Click Context Menu test has passed!").AddScreenCaptureFromPath(screenshotPath);
             }
             catch (Exception ex)
             {
-                extentTest.Fail(ex);
+                string screenshotPath = CaptureScreenshot(_driver, "RightClickContext_Fail");
+                extentTest.Fail(ex).AddScreenCaptureFromPath(screenshotPath);
                 throw;
             }
 

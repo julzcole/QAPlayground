@@ -30,11 +30,13 @@ namespace QAPlayground.Tests
                 fileUploadPage.UploadFile();
                 string caption = fileUploadPage.ValidateCaption();
                 Assert.Equal("tired.jpg", caption);
-                extentTest.Pass("The File Upload Test has passed!");
+                string screenshotPath = CaptureScreenshot(_driver, "FileUpload_Pass");
+                extentTest.Pass("The File Upload Test has passed!").AddScreenCaptureFromPath(screenshotPath);
             }
             catch (Exception ex)
             {
-                extentTest.Fail(ex);
+                string screenshotPath = CaptureScreenshot(_driver, "FileUpload_Fail");
+                extentTest.Fail(ex).AddScreenCaptureFromPath(screenshotPath);
                 throw;
             }
         }

@@ -35,11 +35,13 @@ namespace QAPlayground.Tests
                     Assert.True(starsRatingPage.GetImageElement(i).Displayed);
                 }
 
-                extentTest.Pass("The Stars Rating test has passed!");
+                string screenshotPath = CaptureScreenshot(_driver, "StarsRating_Pass");
+                extentTest.Pass("The Stars Rating test has passed!").AddScreenCaptureFromPath(screenshotPath);
             }
             catch (Exception ex)
             {
-                extentTest.Fail(ex);
+                string screenshotPath = CaptureScreenshot(_driver, "StarsRating_Fail");
+                extentTest.Fail(ex).AddScreenCaptureFromPath(screenshotPath);
                 throw;
             }
         }

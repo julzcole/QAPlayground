@@ -33,11 +33,13 @@ namespace QAPlayground.Tests
                 var dynamicTablePage = basePage.ClickDynamicTableLink();
                 string spiderManName = dynamicTablePage.FindSpiderMan();
                 Assert.Equal("Peter Parker", spiderManName);
-                extentTest.Pass("The DynamicTable test has passed!");
+                string screenshotPath = CaptureScreenshot(_driver, "DynamicTable_Pass");
+                extentTest.Pass("The DynamicTable test has passed!").AddScreenCaptureFromPath(screenshotPath);
             }
             catch (Exception ex)
             {
-                extentTest.Fail(ex);
+                string screenshotPath = CaptureScreenshot(_driver, "DynamicTable_Fail");
+                extentTest.Fail(ex).AddScreenCaptureFromPath(screenshotPath);
                 throw;
             }
         }

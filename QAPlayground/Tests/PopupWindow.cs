@@ -28,11 +28,13 @@ namespace QAPlayground.Tests
                 var popupWindowPage = basePage.ClickPopupWindowLink();
                 string infoText = popupWindowPage.ValidatePopupWindow();
                 Assert.Equal("Button Clicked", infoText);
-                extentTest.Pass("The Popup Window test has passed!");
+                string screenshotPath = CaptureScreenshot(_driver, "PopupWindow_Pass");
+                extentTest.Pass("The Popup Window test has passed!").AddScreenCaptureFromPath(screenshotPath);
             }
             catch (Exception ex)
             {
-                extentTest.Fail(ex);
+                string screenshotPath = CaptureScreenshot(_driver, "PopupWindow_Fail");
+                extentTest.Fail(ex).AddScreenCaptureFromPath(screenshotPath);
                 throw;
             }
 

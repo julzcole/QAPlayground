@@ -28,11 +28,13 @@ namespace QAPlayground.Tests
                 var shadowDOMPage = basePage.ClickShadowDOMLink();
                 string shadowProgressBar = shadowDOMPage.FindShadowButton();
                 Assert.Contains("95", shadowProgressBar);
-                extentTest.Pass("The ShadowDOM test has passed!");
+                string screenshotPath = CaptureScreenshot(_driver, "ShadowDOM_Pass");
+                extentTest.Pass("The ShadowDOM test has passed!").AddScreenCaptureFromPath(screenshotPath);
             }
             catch (Exception ex)
             {
-                extentTest.Fail(ex);
+                string screenshotPath = CaptureScreenshot(_driver, "ShadowDOM_Fail");
+                extentTest.Fail(ex).AddScreenCaptureFromPath(screenshotPath);
                 throw;
             }
         }
