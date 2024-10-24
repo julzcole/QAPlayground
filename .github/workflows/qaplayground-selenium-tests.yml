@@ -55,4 +55,4 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: Test Results
-        path: /TestResults/ExtentReport*.html
+        path: QAPlayground/bin/Debug/net6.0/TestResults/ExtentReport*.html
